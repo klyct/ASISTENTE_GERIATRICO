@@ -22,7 +22,8 @@ class Speaker :
         temp_file = tempfile.mkdtemp()
         save_path=os.path.join(temp_file, 'temp.wav')
         tts_model =self.model_name
-        fake_you.say(text=text, ttsModelToken=tts_model, filename=save_path)
+        print("Genera Audio")
+        fake_you.say(text=text, ttsModelToken=tts_model) ##Aqui se muere
         return save_path
 
     def talk(self, text):
@@ -30,5 +31,6 @@ class Speaker :
         filename = self.__generate_audio(text)
         mixer.music.load(filename)
         audio_duration = mixer.Sound(filename).get_length()
+        print("HABLANDO")
         mixer.music.play()
         time.sleep(audio_duration)
