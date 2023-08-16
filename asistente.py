@@ -7,6 +7,17 @@ def prompt_B(prompt):
     response = chatbot.ask(prompt)
     return response['content']
 
+def presentacion():
+    pres = "¡Hola! Mi nombre es Kim, soy su asistente geriatrico personal" \
+           "¿Qué me presente...? Funciono a traves de Inteligencia Artificial," \
+           "tengo un modelo de lenguaje que me permite resolver cualquiera de tus dudas" \
+           "así como entablar una conversacion contigo. " \
+           "Mi voz fue entrenada por un modelo se síntetis tambien basado en redes neuronales," \
+           "Puedes verme a traves del prototipo de reproductor que han diseñado para mi" \
+           "mis gestos y matices tambien son generados por inteligencia " \
+           "artificial para poder brindarte un mejor servicio, eso es todo sobre mi, si tienes alguna duda" \
+           "sobre mi no dudes en preguntarle a mis creadores."##Inserte saludo de presentacion
+    return pres
 
 from listen import Listener
 from talk import Speaker
@@ -17,13 +28,18 @@ def main():
         try:
             response = listener.listen()
             print(response)
-            if 'hola' in response:
-                prompt = response.replace('hola, ','')
+            if 'kim, presentate' in response:
+                answer = presentacion()
+                print(answer)
+                #speaker.talk(f'{answer}')
+            elif 'kim' in response:
+                prompt = response.replace('kim, ','')
                 print(prompt)
                 answer = prompt_B(prompt)
                 print(answer)
-                speaker.talk(f'{answer}')
-
+                #speaker.talk(f'{answer}')
+            else:
+                print("No haz activado al asistente, intenta de nuevo")
         except Exception as e:
             print(e)
 
