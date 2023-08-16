@@ -31,7 +31,6 @@ def cleanResponse(response):
         response = response.replace(r, "")
     return response
 
-
 from listen import Listener
 from talk import Speaker
 

@@ -13,7 +13,7 @@ class Listener:
         try:
             with sr.Microphone() as source:
                 print('Di algo')
-                listener.adjust_for_ambient_noise(source)
+                listener.adjust_for_ambient_noise(source, duration=0.2,)
                 audio = listener.listen(source)
                 data = io.BytesIO(audio.get_wav_data())
                 audio_clip = AudioSegment.from_file(data)
